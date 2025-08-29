@@ -14,7 +14,14 @@ do {
     adicionarUsuario = prompt('Deseja adicionar outro usuário? [S/N]: ')
     
     let usuario = new Usuario(nome, idade, email)
-    usuarioAtivo.toUpperCase().trim() == 'S' ? usuario.ativo = true : usuario.ativo = false
+    if(usuarioAtivo.toUpperCase().trim() == 'S'){
+        usuario.ativo = true
+    }else if(usuarioAtivo.toUpperCase().trim() == 'N'){
+        usuario.ativo = false
+    }else if (usuarioAtivo.toUpperCase().trim() != 'S' && usuarioAtivo.toUpperCase().trim() != 'N'){
+        console.log('Valor inválido! Usuário será considerado inativo por padrão.')
+        break
+    }
     usuarios.push(usuario)
 
 } while (adicionarUsuario.toUpperCase().trim() == 'S')
